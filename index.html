@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="author" content="Santiago - ENaIR" />
+  <title>ENaIR - Entretenimiento a bordo | elgatovolador.enair.com</title>
+  <meta name="description"
+    content="Entretenimiento en vuelos internacionales: streaming de películas, juegos y web captive para pasajeros. elgatovolador.enair.com" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>✈️</text></svg>">
+  <style>
+    :root {
+      --bg: #f6fbff;
+      --primary: #0b63ff;
+      --accent: #00bfa6;
+      --muted: #6b7280;
+      --card: #ffffff;
+      --radius: 14px;
+      --maxw: 1100px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, var(--bg), #eef6ff 60%);
+      color: #0f1724;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: var(--maxw);
+      margin: 36px auto;
+      padding: 0 20px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), #3aa0ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 20px;
+      box-shadow: 0 6px 18px rgba(11, 99, 255, 0.15);
+    }
+
+    nav {
+      display: flex;
+      gap: 12px;
+      align-items: center
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px
+    }
+
+    nav a.btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 6px 14px rgba(11, 99, 255, .12)
+    }
+
+    nav a:hover {
+      opacity: .95;
+      transform: translateY(-1px)
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 28px;
+      align-items: center;
+      margin-top: 28px
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 13px
+    }
+
+    h1 {
+      font-size: 34px;
+      margin: 10px 0 8px
+    }
+
+    p.lead {
+      color: var(--muted);
+      margin: 0 0 18px
+    }
+
+    .cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .btn {
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(11, 99, 255, .12);
+      color: var(--primary)
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 8px 30px rgba(6, 8, 24, 0.06)
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 22px
+    }
+
+    .feature {
+      background: linear-gradient(180deg, #fff, #fbfeff);
+      padding: 14px;
+      border-radius: 12px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start
+    }
+
+    .feature svg {
+      flex: 0 0 42px
+    }
+
+    footer {
+      margin-top: 44px;
+      padding: 30px 0;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap
+    }
+
+    .small {
+      font-size: 13px
+    }
+
+    /* Responsive */
+    @media (max-width:920px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center
+      }
+
+      .features {
+        grid-template-columns: repeat(1, 1fr)
+      }
+
+      nav {
+        display: none
+      }
+    }
+
+    /* contact card */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #e6eefc
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 14px
+    }
+
+    .svg-plane {
+      width: 100%;
+      height: 100%;
+      display: block
+    }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(90deg, #e6f7ff, #ffffff);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 13px
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" role="main">
+    <header>
+      <div class="brand" aria-label="Marca ENaIR">
+        <div class="logo" aria-hidden="true">EN</div>
+        <div>
+          <div style="font-weight:800">ENaIR</div>
+          <div class="small muted">Entretenimiento a bordo</div>
+        </div>
+      </div>
+
+      <nav aria-label="Navegación principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#contacto">Contacto</a>
+        <a class="btn btn-outline" href="https://elcanariovolador.enair.com" target="_blank" rel="noopener">Webmail</a>
+        <a class="btn btn-primary" href="#demo">Probar Demo</a>
+      </nav>
+    </header>
+
+    <section class="hero" aria-labelledby="titulo-principal">
+      <div>
+        <div class="eyebrow">WiFi & entretenimiento en vuelos internacionales</div>
+        <h1 id="titulo-principal">Entretenimiento seguro y fácil para pasajeros — ENaIR</h1>
+        <p class="lead">Ofrecemos una plataforma cautiva con películas por streaming, juegos y webmail
+          para pasajeros. Rápido acceso por WiFi de cabina, catálogo organizado y reproducción optimizada.</p>
+
+        <div class="cta" role="region" aria-label="Llamadas a la acción">
+          <a class="btn btn-primary" href="#servicios">Ver servicios</a>
+          <a class="btn btn-outline" href="mailto:info@elcanariovolador.enair.com">Contáctanos</a>
+        </div>
+
+        <div class="card" style="margin-top:18px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <!-- simple svg icon -->
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M2 12l20-7-7 20-3-8-8-5z" fill="#0b63ff" opacity=".12" />
+              <path d="M3 12s6-2 10-2 8 2 8 2-6 3-8 5-10-5-10-5z" fill="#0b63ff" />
+            </svg>
+            <div>
+              <div style="font-weight:700">Rápido despliegue</div>
+              <div class="muted" style="font-size:13px">Landing page HTML + servidor multimedia — listo para integrar
+                con tu backend y DNS.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="features" id="servicios" aria-label="Características principales">
+          <div class="feature" role="article">
+            <svg viewBox="0 0 24 24" width="42" height="42" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" fill="#e8f5ff"></circle>
+              <path d="M8 12h8" stroke="#0b63ff" stroke-width="1.6" stroke-linecap="round" />
+              <path d="M8 9h8" stroke="#00bfa6" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+            <div>
+              <div style="font-weight:700">Página cautiva</div>
+              <div class="muted">Portal inicial para que pasajeros acepten condiciones y accedan al catálogo.</div>
+            </div>
+          </div>
+
+          <div class="feature" role="article">
+            <svg viewBox="0 0 24 24" width="42" height="42" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="12" rx="2" fill="#fff7ed" stroke="#ffb020"></rect>
+              <path d="M8 9h8M8 12h5" stroke="#ff8a00" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+            <div>
+              <div style="font-weight:700">Streaming optimizado</div>
+              <div class="muted">Reproducción adaptativa para baja latencia en redes a bordo.</div>
+            </div>
+          </div>
+
+          <div class="feature" role="article">
+            <svg viewBox="0 0 24 24" width="42" height="42" aria-hidden="true">
+              <path d="M12 2l4 7h6l-5 4 2 7-7-4-7 4 2-7-5-4h6z" fill="#f0fff7"></path>
+              <path d="M12 2v12" stroke="#00bfa6" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+            <div>
+              <div style="font-weight:700">Correo corporativo</div>
+              <div class="muted">Acceso webmail, SMTP/IMAP y gestión para empleados.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside aria-label="Imagen y demostración" style="text-align:center">
+
+        <div class="card" style="padding:22px;display:flex;flex-direction:column;align-items:center;gap:14px">
+          <svg class="svg-plane" viewBox="0 0 640 360" role="img" aria-labelledby="planeTitle planeDesc">
+            <title id="planeTitle">Avión y entretenimiento a bordo</title>
+            <desc id="planeDesc">Ilustración estilizada de un avión con pantallas y conexión WiFi para pasajeros.</desc>
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0" stop-color="#0b63ff" />
+                <stop offset="1" stop-color="#00bfa6" />
+              </linearGradient>
+            </defs>
+            <rect width="640" height="360" rx="20" fill="#f7fbff" />
+            <g transform="translate(40,40)">
+              <path d="M0 120 L460 0 L470 40 L50 160 Z" fill="url(#g1)" opacity=".12"></path>
+              <path d="M40 130 L420 30 L440 78 L80 170 Z" fill="#0b63ff" opacity=".08"></path>
+              <g transform="translate(60,80)">
+                <rect x="0" y="0" width="260" height="80" rx="10" fill="#fff" />
+                <text x="18" y="36" fill="#0b63ff" font-weight="700"
+                  style="font-size:20px">elgatovolador.enair.com</text>
+                <text x="18" y="60" fill="#6b7280" style="font-size:13px">Películas, juegos y webmail - WiFi a
+                  bordo</text>
+              </g>
+            </g>
+          </svg>
+
+          <div style="text-align:left;max-width:360px">
+            <div style="font-weight:800;font-size:15px">¿Listo para la demo?</div>
+            <div class="muted" style="margin-top:6px">Prueba la demo en la cabina: accesos rápidos y catálogo
+              optimizado. Soporte para IPv6 y HTTPS.</div>
+            <div style="margin-top:10px">
+              <a class="btn btn-primary" href="#demo">Probar demo</a>
+              <a class="btn btn-outline" href="https://elcanariovolador.enair.com" target="_blank"
+                rel="noopener">Acceder a webmail</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="demo" style="margin-top:30px">
+      <div class="card">
+
+        <h3 style="margin-top:12px">Contacto y soporte</h3>
+        <div class="contact-form" id="contacto" aria-label="Formulario de contacto">
+          
+          <input type="text" placeholder="Nombre" aria-label="Nombre" id="fname">
+          <input type="email" placeholder="Correo" aria-label="Correo" id="email">
+          <textarea rows="4" placeholder="Mensaje" aria-label="Mensaje" id="msg"></textarea>
+          <div style="display:flex;gap:8px">
+            <a class="btn btn-primary" href="mailto:info@elcanariovolador.enair.com?subject=Contacto%20ENaIR"
+              role="button">Enviar por correo</a>
+            <button class="btn btn-outline" type="button" onclick="copyDemo()">Copiar comando demo</button>
+          </div>
+          <div class="muted" style="margin-top:8px">También puedes acceder directamente al webmail y a la consola de
+            administración.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="small">© ENaIR — elgatovolador.enair.com · <span class="muted">Soporte:
+          info@elcanariovolador.enair.com</span></div>
+  </div>
+  </footer>
+
+  <script>
+    function copyDemo() {
+      const txt = "curl -I https://elgatovolador.enair.com && dig +short elgatovolador.enair.com && openssl s_client -connect elgatovolador.enair.com:443 -servername elgatovolador.enair.com";
+      navigator.clipboard?.writeText(txt).then(() => alert('Comandos de demo copiados al portapapeles'), () => alert('Copia manual: ' + txt));
+    }
+  </script>
+</body>
+
+</html>
